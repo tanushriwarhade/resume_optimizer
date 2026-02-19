@@ -1,0 +1,8 @@
+streamlit>=1.30.0
+pdfplumber>=0.10.0
+spacy>=3.7.0
+fuzzywuzzy>=0.18.0
+python-Levenshtein>=0.25.0
+pandas>=2.0.0
+reportlab>=4.0.0
+openai>=1.0.0
