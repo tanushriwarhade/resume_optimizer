@@ -36,20 +36,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ─── Load spaCy model with EXPLICIT PATH (your Windows venv path) ───
-@st.cache_resource
-def load_nlp():
-    try:
-        # This is the path from your environment
-        model_path = r"C:\Users\tanuw\Desktop\resume_optimizer\venv\Lib\site-packages\en_core_web_sm\en_core_web_sm-3.8.0"
-        
-        nlp = spacy.load(model_path)
-        st.sidebar.success("spaCy model loaded successfully (explicit path)")
-        print("✅ spaCy model loaded from:", model_path)  # appears in terminal
-        return nlp
-    except Exception as e:
-        st.sidebar.error(f"Failed to load spaCy model: {str(e)}")
-        st.error(f"spaCy model failed to load: {str(e)}\nFalling back to basic keyword matching.")
-        return None
+# nlp = load_nlp()   # comment out
+
+# Inside analysis block:
+jd_keywords = list(set(word for word in jd_text.lower().split() if len(word) > 2 and word.isalpha()))
+resume_keywords = list(set(word for word in resume_text.lower().split() if len(word) > 2 and word.isalpha()))
 
 # Sidebar for AI configuration
 st.sidebar.header("AI Configuration")
